@@ -1,0 +1,45 @@
+name: 问题反馈 / Bug report
+description: 报告遇到的问题 / Report a problem
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "请勿上传个人健康备份或签名密钥，截图请先遮挡私人信息。 / Do not upload health backups or signing keys. Redact private information from screenshots."
+  - type: input
+    id: environment
+    attributes:
+      label: 版本、设备与系统 / App version, device and OS
+      placeholder: "0.4 · Samsung S24 · Android … / Chrome …"
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: 界面语言 / UI language
+      options:
+        - 简体中文
+        - English
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 重现步骤 / Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期结果 / Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果 / Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息（选填） / Additional details (optional)

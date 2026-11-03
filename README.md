@@ -1,6 +1,12 @@
-# daily fitness · Demo 0.3
+# daily fitness · Demo 0.4
+
+[简体中文](README.md) · [English](README.en.md) · [下载 / Download](https://github.com/losslesswow-tech/dailyfitness/releases/latest) · [建议与问题 / Feedback](https://github.com/losslesswow-tech/dailyfitness/issues/new/choose)
 
 可离线试用的健身日历，支持 Android 安装和电脑浏览器预览。Demo 采用本地 HTML/CSS/JavaScript 界面与 Java Android 安装壳；完整产品规划中的 Kotlin / Compose / Room 原生版尚未实现。
+
+欢迎大家下载试用，并通过 [GitHub Issues](https://github.com/losslesswow-tech/dailyfitness/issues/new/choose) 分享更新建议、使用体验和问题反馈，中英文均可。提出建议时，可以告诉我你想完成什么、现在遇到什么困难，以及希望怎样改善；请勿公开上传个人健康备份或签名密钥。
+
+**0.4 新增：** 页面顶部的“语言 / Language”支持简体中文和 English，首次按系统语言选择，可随时切换并自动记住。内置运动、器械、餐次和动作提供英文名称；自定义文字和历史记录保持原样，食物保留官方原始名称。GitHub 提供双语介绍与反馈模板；应用“我的 / Profile”也有建议入口，通过外部浏览器打开。
 
 应用名称统一为 **daily fitness**。图标将两个“日”字作为左右杠铃片，中横连接为杠铃杆，沿用深绿与浅绿配色。[SVG 图标](web/icon.svg) 为矢量源文件；[PNG 预览](docs/images/daily-fitness-icon.png) 为 512 × 512 透明圆角版本。Android 桌面使用同款自适应图标，支持系统的圆形和圆角遮罩。
 
@@ -8,22 +14,23 @@
 
 | 版本 | 安装包与校验文件 | 更新说明 |
 | --- | --- | --- |
-| Demo 0.3（当前版本） | [GitHub Release v0.3.0](https://github.com/losslesswow-tech/dailyfitness/releases/tag/v0.3.0) | [0.3 更新说明](docs/releases/0.3.md) |
+| Demo 0.4（当前版本） | [GitHub Release v0.4.0](https://github.com/losslesswow-tech/dailyfitness/releases/tag/v0.4.0) | [0.4 更新说明](docs/releases/0.4.md) |
+| Demo 0.3 | [GitHub Release v0.3.0](https://github.com/losslesswow-tech/dailyfitness/releases/tag/v0.3.0) | [0.3 更新说明](docs/releases/0.3.md) |
 | Demo 0.2 | [GitHub Release v0.2.0](https://github.com/losslesswow-tech/dailyfitness/releases/tag/v0.2.0) | [0.2 更新说明](docs/releases/0.2.md) |
 | Demo 0.1 | [GitHub Release v0.1.0](https://github.com/losslesswow-tech/dailyfitness/releases/tag/v0.1.0) | [0.1 更新说明](docs/releases/0.1.md) |
 
-本仓库于 2026-11-03 首次导入。`main` 与 `v0.3.0` 保存当前完整源码；0.1 / 0.2 仅保留了原始 APK 和试用说明，没有对应的完整源码快照，其标签只归档发布资料。需要安装旧版时请下载 Release 中的 APK，GitHub 自动生成的 Source code 压缩包不包含旧版源码或安装包。
+本仓库于 2026-11-03 首次导入。`main` 保存当前源码，`v0.3.0` / `v0.4.0` 分别保留对应的完整源码；0.1 / 0.2 仅保留了原始 APK 和试用说明，没有对应的完整源码快照，其标签只归档发布资料。需要安装旧版时请下载 Release 中的 APK，GitHub 自动生成的 Source code 压缩包不包含 0.1 / 0.2 源码或安装包。
 
-每个 Release 提供 `SHA256SUMS.txt`，可用 PowerShell 的 `Get-FileHash <APK路径> -Algorithm SHA256` 核对下载文件。三个安装包已验证包名、签名一致且 versionCode 递增；签名私钥与本地个人数据不纳入仓库。
+每个 Release 提供 `SHA256SUMS.txt`，可用 PowerShell 的 `Get-FileHash <APK路径> -Algorithm SHA256` 核对下载文件。各版本沿用同一包名与签名，versionCode 递增；签名私钥与本地个人数据不纳入仓库。
 
 ## 开始试用
 
-安装文件：[dailyfitness-demo-0.3.apk](https://github.com/losslesswow-tech/dailyfitness/releases/download/v0.3.0/dailyfitness-demo-0.3.apk)。本地构建输出位于 `artifacts/`，GitHub 安装包统一存放在 Releases。同包名、同签名，版本号递增，可在 Demo 0.1 / 0.2 上覆盖更新，数据格式保持兼容。更新前仍建议导出一份备份，无需卸载旧版。
+安装文件：[dailyfitness-demo-0.4.apk](https://github.com/losslesswow-tech/dailyfitness/releases/download/v0.4.0/dailyfitness-demo-0.4.apk)。本地构建输出位于 `artifacts/`，GitHub 安装包统一存放在 Releases。同包名、同签名，版本号递增，可在 Demo 0.1 / 0.2 / 0.3 上覆盖更新，数据格式保持兼容。更新前仍建议导出一份备份，无需卸载旧版。
 
 1. 将 APK 通过 USB、Quick Share 或你常用的文件传输方式发到三星 S24。
 2. 在手机“我的文件”中打开 APK，按系统提示允许该来源安装，然后安装“daily fitness”。无需打开开发者模式或 USB 调试。
 3. 首次打开可填写身体资料，也可以先体验界面。初始不含虚构健康记录。
-4. 从日历添加运动、饮食、睡眠；在“训练”中建立分化计划或快速开始三大项。
+4. 从日历添加运动、饮食、睡眠；在“训练”中建立分化计划或快速开始三大项。页面顶部可切换中文 / English。
 
 若三星的安全设置阻止安装，先查看手机提示并判断是否允许这次本地测试安装；Demo 不会自动修改系统安全设置。手机组织管理策略可能禁止侧载，需要使用你有权使用的设备。
 
@@ -55,7 +62,7 @@
 
 ## 数据说明
 
-Android 记录写入应用私有文件，使用 AtomicFile 提交；没有网络权限。导出和导入通过系统文件选择器完成，不申请全盘存储权限。浏览器预览的数据只存在该浏览器，不会自动同步到手机。
+Android 记录写入应用私有文件，使用 AtomicFile 提交；语言偏好单独保存，没有网络权限。来源和反馈链接通过系统外部浏览器打开，不会自动上传记录；提交 GitHub 建议需要网络和 GitHub 账号。导出和导入通过系统文件选择器完成，不申请全盘存储权限。浏览器预览的数据只存在该浏览器，不会自动同步到手机。清空应用内记录和恢复健康备份不会改变语言选择。
 
 卸载、清除应用数据或清除浏览器存储会删除相应记录。请在“我的 → 导出备份”保存 JSON；Android 与浏览器可通过此备份手动互相转移。恢复备份会替换当前数据，导入前会确认。当前最多接受 4 MB 备份。
 
@@ -101,6 +108,8 @@ npm run test:ui
 浏览器测试不能替代安卓真机验证。APK 构建后另执行签名、Manifest 与资源检查。
 
 Demo 0.3 在上述验证之外，增加清空确认 / 取消 / 失败保护、中文食品来源与备份、运动能量公式、历史体重、缺失资料、重训跨动作去重与旧版本场次迁移的验证。
+
+Demo 0.4 增加语言选择持久化与保存失败保护、未提交输入保留、英文饮食 / 有氧 / 睡眠 / 力量流程、旧备份与自定义中文名称兼容、英文清空确认、翻译占位符与内置项目覆盖、英文窄屏和反馈入口验证。共 35 项逻辑测试、32 项浏览器测试。
 
 ## 重新构建 APK
 

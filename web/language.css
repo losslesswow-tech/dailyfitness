@@ -1,0 +1,26 @@
+.app-tools{display:flex;justify-content:flex-end;max-width:1500px;margin:0 auto;padding:16px 46px 0;position:relative;z-index:1}
+.language-control{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}
+.language-control select{width:auto;min-width:116px;min-height:40px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:var(--ink);font:inherit}
+.settings-row:where(a){color:var(--green);text-decoration:none;gap:12px;line-height:1.6}
+html[lang="en"] .page-header>div{min-width:0}
+html[lang="en"] .page-header h1{font-size:clamp(23px,3.5vw,34px);line-height:1.25;overflow-wrap:break-word}
+html[lang="en"] .page-header .avatar{flex-shrink:0}
+html[lang="en"] .report-heading{flex-wrap:wrap;gap:6px}
+html[lang="en"] .card-title{flex-wrap:wrap;gap:10px}
+html[lang="en"] .macro-grid{gap:8px}
+html[lang="en"] .macro{padding:12px 8px;min-width:0}
+html[lang="en"] .macro strong{font-size:19px}
+html[lang="en"] .nutrition-total{flex-wrap:wrap;gap:10px}
+html[lang="en"] .plan-day{gap:10px;flex-wrap:wrap}
+html[lang="en"] .plan-day .btn{margin-left:auto}
+html[lang="en"] .start-tile strong{overflow-wrap:anywhere}
+html[lang="en"] .form-actions{flex-wrap:wrap}
+html[lang="en"] .form-actions>.btn{min-width:0;white-space:normal}
+html[lang="en"] .set-header{font-size:11px}
+html[lang="en"] .set-header span{overflow-wrap:anywhere}
+html[lang="en"] .metric-label{min-height:2.8em}
+html[lang="en"] .timer{flex-wrap:wrap;gap:10px}
+html[lang="en"] .workout-top{flex-wrap:wrap;gap:10px}
+html[lang="en"] .record-row{gap:10px}
+html[lang="en"] .record-row>span:first-child{min-width:0;overflow-wrap:anywhere}
+@media(max-width:700px){.app-tools{padding:12px 18px 0}.language-control{font-size:11px}.language-control select{min-height:42px}.app-tools+.main{padding-top:16px}html[lang="en"] .main{padding-top:20px}html[lang="en"] .start-grid{grid-template-columns:1fr}html[lang="en"] .start-tile{display:grid;grid-template-columns:28px 1fr;column-gap:12px}html[lang="en"] .start-tile .icon{grid-row:span 2}html[lang="en"] .start-tile strong{font-size:14px}html[lang="en"] .start-tile small{font-size:11px}html[lang="en"] .banner{flex-wrap:wrap;gap:12px}html[lang="en"] .form-actions>.btn{flex-basis:42%}html[lang="en"] .food-portion-row{flex-wrap:wrap}html[lang="en"] .food-portion-row .btn{width:100%}html[lang="en"] .macro strong{font-size:16px}html[lang="en"] .month-title{font-size:18px}}

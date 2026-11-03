@@ -1,0 +1,26 @@
+name: 功能建议 / Feature request
+description: 分享下一次更新的建议 / Suggest an improvement for the next update
+title: "[Idea] "
+body:
+  - type: markdown
+    attributes:
+      value: "欢迎用中文或 English 提建议。请勿上传个人健康备份。 / English and Chinese are welcome. Please do not upload personal health backups."
+  - type: textarea
+    id: goal
+    attributes:
+      label: 想完成什么？ / What would you like to do?
+      description: 描述使用场景和当前困难。 / Describe your use case and current difficulty.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 更新建议 / Suggested improvement
+      description: 希望如何改变？其他方案也欢迎。 / How should it change? Alternatives are welcome.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 当前版本与设备（选填） / Version and device (optional)
+      placeholder: "0.4 · Android / Browser · 中文 / English"

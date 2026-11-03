@@ -20,7 +20,7 @@ function Check-Exit([string]$Step) { if ($LASTEXITCODE -ne 0) { throw "$Step fai
 $resources = Join-Path $workDir 'resources.zip'
 $unsigned = Join-Path $workDir 'unsigned.apk'
 $aligned = Join-Path $workDir 'aligned.apk'
-$signed = Join-Path $outDir 'dailyfitness-demo-0.3.apk'
+$signed = Join-Path $outDir 'dailyfitness-demo-0.4.apk'
 & (Join-Path $buildTools.FullName 'aapt2.exe') compile --dir (Join-Path $projectRoot 'android\res') -o $resources
 Check-Exit 'Resource compilation'
 & (Join-Path $buildTools.FullName 'aapt2.exe') link -o $unsigned -I $androidJar --manifest (Join-Path $projectRoot 'android\AndroidManifest.xml') -A (Join-Path $projectRoot 'web') --min-sdk-version 26 --target-sdk-version 35 $resources
