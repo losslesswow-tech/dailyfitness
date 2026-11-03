@@ -17,7 +17,7 @@
   const finite = (n, min, max) => typeof n === 'number' && Number.isFinite(n) && n >= min && n <= max;
   const text = (s, max = 80) => typeof s === 'string' && s.trim().length > 0 && s.length <= max;
   const validId = s => typeof s === 'string' && /^[a-zA-Z0-9_-]{1,80}$/.test(s);
-  function blank() { return {version: VERSION, profiles: [], cardio: [], strength: [], sessions: [], meals: [], sleep: [], customCardio: [], exercises: [], plans: [], draft: null}; }
+  function blank() { return {version: VERSION, profiles: [], cardio: [], strength: [], sessions: [], meals: [], sleep: [], customFoods: [], customCardio: [], exercises: [], plans: [], draft: null}; }
   const calories = (p, c, f) => Math.round((p * 4 + c * 4 + f * 9) * 10) / 10;
   function distanceToKm(value,unit='km') { if(!DISTANCE_UNITS.includes(unit))throw Error('距离单位不正确。');return value===null?null:value/(unit==='m'?1000:1); }
   function distanceFromKm(value,unit='km') { if(!DISTANCE_UNITS.includes(unit))throw Error('距离单位不正确。');return value===null?null:value*(unit==='m'?1000:1); }
@@ -39,7 +39,28 @@
     return total;
   }
   const mealCalories = meal => meal.energyMethod==='food-database'&&meal.foods?.length?foodTotals(meal.foods).kcal:calories(meal.protein,meal.carbs,meal.fat);
+  function validatePrivateFood(food) {
+    if(!food||!validId(food.id)||!food.id.startsWith('private-')||!text(food.name)||!text(food.updatedAt)||!validDate(food.updatedAt.slice(0,10))||!Number.isFinite(Date.parse(food.updatedAt))||!Array.isArray(food.ingredients)||food.ingredients.length<1||food.ingredients.length>100||food.ingredients.some(s=>!text(s,200))||!text(food.cookingMethod,500))throw Error('请填写食物名称、食材清单（含调料与食用油）和烹饪方式。');
+    if(!finite(food.basisGrams,.1,5000)||['protein','carbs','fat'].some(k=>!finite(food[k],0,5000)))throw Error('成品重量须为 0.1–5000 g，三大营养素须填写非负克数，未摄入请填 0。');
+    if(food.protein+food.carbs+food.fat>food.basisGrams+.000001)throw Error('三大营养素总克数不能超过对应的成品重量。');
+  }
+  function privateFoodPer100(food) {
+    validatePrivateFood(food);
+    const ratio=100/food.basisGrams,protein=food.protein*ratio,carbs=food.carbs*ratio,fat=food.fat*ratio;
+    // Round after portion scaling so small nutrient amounts in large recipes are retained.
+    return {protein,carbs,fat,kcal:protein*4+carbs*4+fat*9};
+  }
+  function privateFoodSnapshot(food,grams) {
+    const snapshot={foodId:food.id,name:food.name,description:food.name,source:'private',release:food.updatedAt.slice(0,10),grams,per100:privateFoodPer100(food),recipe:JSON.parse(JSON.stringify(food))};
+    validateFood(snapshot);
+    return snapshot;
+  }
   function validateFood(item) {
+    if(item?.source==='private'){
+      const expected=privateFoodPer100(item.recipe);
+      if(item.foodId!==item.recipe.id||item.name!==item.recipe.name||item.description!==item.name||item.release!==item.recipe.updatedAt.slice(0,10)||!finite(item.grams,.1,5000)||!item.per100||Object.keys(expected).some(k=>!Number.isFinite(item.per100[k])||Math.abs(item.per100[k]-expected[k])>.000001))throw Error('私人食物的重量或营养快照不正确。');
+      return;
+    }
     if(!item||!(item.source==='tfda'?validId(item.sourceId)&&item.foodId==='tfda-'+item.sourceId:Number.isInteger(item.fdcId)&&finite(item.fdcId,1,100000000))||!text(item.name,500)||!text(item.description,2000)||!['foundation','sr-legacy','tfda'].includes(item.source)||typeof item.release!=='string'||!/^\d{4}-\d{2}(-\d{2})?$/.test(item.release)||!finite(item.grams,.1,5000)||!item.per100||['protein','carbs','fat'].some(k=>!finite(item.per100[k],0,100))||!finite(item.per100.kcal,0,1000)) throw Error('食物来源、重量或每 100 g 营养值不正确。');
   }
   function metabolism(p) {
@@ -122,6 +143,10 @@
     if(typeof raw==='string'&&raw.length>4000000) throw Error('备份超过 4 MB，请缩小文件后重试。');
     const db = typeof raw==='string'?JSON.parse(raw):raw;
     if(!db||db.version!==VERSION) throw Error('不支持的备份版本。');
+    if(db.customFoods===undefined)db.customFoods=[];
+    if(!Array.isArray(db.customFoods)||db.customFoods.length>1000)throw Error('私人食物库格式不正确，最多保存 1000 项。');
+    db.customFoods.forEach(validatePrivateFood);
+    if(new Set(db.customFoods.map(f=>f.id)).size!==db.customFoods.length)throw Error('私人食物编号重复。');
     if(db.sessions===undefined)db.sessions=[];
     if(!Array.isArray(db.sessions)||db.sessions.length>50000)throw Error('力量训练场次格式不正确。');
     for(const s of db.sessions){
@@ -146,5 +171,5 @@
     const planIds=db.plans.map(p=>p.id); if(new Set(planIds).size!==planIds.length) throw Error('计划编号重复。');
     return db;
   }
-  root.Fitness = {VERSION,MUSCLES,CARDIO,EQUIPMENT,MEALS,STROKES,POOLS,DISTANCE_UNITS,SPEED_UNITS,uid,localDate,shiftDay,validDate,blank,calories,distanceToKm,distanceFromKm,speedToKmh,speedFromKmh,resolveCardioMetrics,foodTotals,mealCalories,validateFood,metabolism,sleepHours,profileAt,summary,totalWeight,groupedSets,lastWeight,mealName,validateProfile,validateEnergy,validateRecord,validateBackup};
+  root.Fitness = {VERSION,MUSCLES,CARDIO,EQUIPMENT,MEALS,STROKES,POOLS,DISTANCE_UNITS,SPEED_UNITS,uid,localDate,shiftDay,validDate,blank,calories,distanceToKm,distanceFromKm,speedToKmh,speedFromKmh,resolveCardioMetrics,foodTotals,mealCalories,validateFood,validatePrivateFood,privateFoodPer100,privateFoodSnapshot,metabolism,sleepHours,profileAt,summary,totalWeight,groupedSets,lastWeight,mealName,validateProfile,validateEnergy,validateRecord,validateBackup};
 })(globalThis);

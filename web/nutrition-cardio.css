@@ -1,4 +1,12 @@
 .food-estimator{border:1px solid #c6d3bc;border-radius:14px;background:#f8faf5;overflow:hidden}
+.private-food-editor{min-width:0;margin:20px 0 0;padding:16px;border:1px solid #a8b4a4;border-radius:14px;background:var(--surface)}
+.private-food-editor legend{padding:0 7px;font-size:14px;font-weight:650;color:var(--green)}
+.private-food-editor .tip{margin-top:8px}.private-food-editor .form-actions .btn{min-width:0;overflow-wrap:anywhere}
+.private-food-card{padding:18px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.private-food-card:last-child{border-bottom:0}
+.private-food-card .form-actions{margin-top:12px}.private-food-details{font-size:12px;line-height:1.7;margin-top:12px;color:var(--muted);overflow-wrap:anywhere}
+.private-food-details strong{font-size:12px;color:var(--ink);font-weight:550}.private-food-details ul{margin:6px 0 10px;padding-left:20px}
+#new-private-food[hidden],#private-library[hidden],#meal-new-private[hidden]{display:none}
+@media(max-width:420px){html[lang="en"] .private-food-editor .form-grid .field>span{min-height:3.2em}}
 .food-estimator>summary{display:flex;align-items:center;gap:9px;padding:14px 15px;cursor:pointer;min-height:48px;color:var(--green);font-weight:600;font-size:13px;flex-wrap:wrap}
 .food-estimator>summary::after{content:'＋';margin-left:auto;font-size:18px}.food-estimator[open]>summary::after{content:'−'}
 .food-estimator>summary .icon{width:18px;height:18px}.food-estimator>summary .badge{font-size:10px;font-weight:400}

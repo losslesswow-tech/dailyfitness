@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="cn.dailyfitness.demo" android:versionCode="5" android:versionName="0.4.0-demo">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="cn.dailyfitness.demo" android:versionCode="6" android:versionName="0.5.0-demo">
   <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35"/>
   <application android:label="daily fitness" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher" android:theme="@style/AppTheme" android:allowBackup="false" android:supportsRtl="true" android:usesCleartextTraffic="false">
     <activity android:name=".MainActivity" android:exported="true" android:windowSoftInputMode="adjustResize" android:configChanges="keyboardHidden|orientation|screenSize|uiMode">

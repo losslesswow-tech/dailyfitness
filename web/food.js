@@ -26,6 +26,11 @@
     root.Fitness.validateFood(snapshot);
     return snapshot;
   }
-  const reference=food=>food.source==='tfda'?'TFDA · 样品 '+(food.sourceId||String(food.id||food.foodId).replace(/^tfda-/,'')):'USDA · FDC '+(food.fdcId||food.id);
-  root.FoodNutrition={available:foods.length>0,count:foods.length,aliasCount:foods.filter(f=>f.name).length,tfdaCount:foods.filter(f=>f.source==='tfda').length,search,estimate,reference,get:id=>byId.get(String(id)),source:key=>sources.get(key),documentation:catalog?.documentation||'https://fdc.nal.usda.gov/download-datasets/'};
+  function searchPrivate(foods,query,limit=20){
+    const q=normalize(query).slice(0,100);
+    const matches=foods.filter(f=>!q||normalize([f.name,...f.ingredients,f.cookingMethod].join(' ')).includes(q));
+    return{total:matches.length,foods:matches.slice(0,limit)};
+  }
+  const reference=food=>food.source==='private'?'私人食物 · 手动录入':food.source==='tfda'?'TFDA · 样品 '+(food.sourceId||String(food.id||food.foodId).replace(/^tfda-/,'')):'USDA · FDC '+(food.fdcId||food.id);
+  root.FoodNutrition={available:foods.length>0,count:foods.length,aliasCount:foods.filter(f=>f.name).length,tfdaCount:foods.filter(f=>f.source==='tfda').length,search,searchPrivate,estimate,reference,get:id=>byId.get(String(id)),source:key=>sources.get(key),documentation:catalog?.documentation||'https://fdc.nal.usda.gov/download-datasets/'};
 })(globalThis);
