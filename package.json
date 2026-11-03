@@ -1,0 +1,16 @@
+{
+  "name": "dailyfitness",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:ui": "playwright test",
+    "build:android": "powershell -ExecutionPolicy Bypass -File scripts/build-android.ps1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2",
+    "opencc-js": "1.4.2"
+  }
+}

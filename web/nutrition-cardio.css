@@ -1,0 +1,25 @@
+.food-estimator{border:1px solid #c6d3bc;border-radius:14px;background:#f8faf5;overflow:hidden}
+.food-estimator>summary{display:flex;align-items:center;gap:9px;padding:14px 15px;cursor:pointer;min-height:48px;color:var(--green);font-weight:600;font-size:13px;flex-wrap:wrap}
+.food-estimator>summary::after{content:'＋';margin-left:auto;font-size:18px}.food-estimator[open]>summary::after{content:'−'}
+.food-estimator>summary .icon{width:18px;height:18px}.food-estimator>summary .badge{font-size:10px;font-weight:400}
+.food-estimator-body{padding:0 15px 16px}.food-results{max-height:235px;overflow-y:auto;overscroll-behavior:contain}
+.food-result{display:flex;flex-direction:column;gap:4px;width:100%;padding:13px 9px;border-top:1px solid var(--line);text-align:left;overflow-wrap:anywhere}
+.food-result:hover,.food-result:focus-visible{background:var(--green-light)}.food-result strong{font-size:13px;font-weight:600}.food-result small{font-size:10px}
+.food-original{color:var(--muted);font-size:11px;font-weight:400;overflow-wrap:anywhere;line-height:1.6;display:block}
+.food-choice{background:#eef3e7;border:1px solid #c4d1b8;border-radius:12px;padding:15px;margin-top:15px;overflow-wrap:anywhere}.food-choice[hidden]{display:none}
+.food-choice>strong{font-size:14px}.food-portion-row{display:grid;grid-template-columns:minmax(90px,1fr) auto;gap:12px;align-items:end;margin-top:14px}
+.food-portion-row .btn{padding:11px 14px}.food-portion-preview{font-size:12px;font-weight:550;color:var(--green);margin-top:12px;min-height:20px}
+.food-source-note{font-size:10px;line-height:1.8;color:var(--muted);margin-top:12px;overflow-wrap:anywhere}
+.food-list-title{font-weight:600;font-size:13px;margin-top:18px;margin-bottom:8px}.meal-food-row{padding:12px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;justify-content:space-between}
+.meal-food-row>div{min-width:0;overflow-wrap:anywhere}.meal-food-row strong{font-size:13px;font-weight:550}.meal-food-row p{font-size:12px;color:var(--muted);margin-top:3px}.meal-food-row small{font-size:10px}
+.meal-food-row .round-btn{width:34px;height:34px;min-height:34px}.meal-food-row .icon{width:16px;height:16px}
+.food-totals{border-top:1px solid var(--line);padding-top:13px;display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;font-size:12px}
+.food-totals small{font-size:10px}.food-totals .btn{font-size:12px;padding:9px 12px}.food-estimator .form-error{margin-top:10px}.food-estimator .field{font-size:13px}
+.cardio-form .metric-field{gap:7px}.metric-label{display:block;font-size:12px;font-weight:550;color:#4f6052;min-height:20px;line-height:20px}
+.metric-input{min-width:0;display:flex;align-items:center;border:1px solid #a8b4a4;border-radius:11px;background:#fff;min-height:48px;overflow:hidden}
+.cardio-form .metric-input input{border:0;border-radius:0;min-width:0;width:100%;padding:11px 9px;min-height:46px;background:transparent;flex:1}
+.cardio-form .metric-input input[readonly]{background:#f3f5ee}.cardio-form .metric-input select{border:0;border-left:1px solid var(--line);border-radius:0;flex:0 0 auto;width:auto;max-width:94px;min-height:46px;padding:8px 4px;font-size:11px;background:#f6f8f1}
+.metric-unit{flex-shrink:0;color:var(--muted);font-size:11px;padding-right:10px}.metric-input:focus-within{outline:3px solid #8b9e55;outline-offset:2px}.cardio-form .metric-input input:focus-visible,.cardio-form .metric-input select:focus-visible{outline:0}
+.cardio-form #swim-options .field>span{min-height:20px;line-height:20px}.cardio-form #swim-options [hidden]{display:none}
+.exercise-energy-report{border:1px solid #d5e0c8;background:#f3f7ed;border-radius:13px;padding:14px 15px;margin:0 0 14px}.exercise-energy-report>span{display:block;color:var(--green);font-size:12px}.exercise-energy-report>strong{display:block;color:var(--green);font-size:25px;line-height:1.4;margin-top:4px;font-variant-numeric:tabular-nums}.exercise-energy-report small{font-size:11px;font-weight:400}.exercise-energy-report p,.exercise-energy-report details{font-size:11px;color:var(--muted);line-height:1.8;margin-top:6px}.exercise-energy-report summary{cursor:pointer;min-height:32px;color:var(--green)}.exercise-energy-report a{font-size:11px}.exercise-energy-note{border-radius:11px;padding:12px 14px;margin-top:13px;background:#f0f4e9;color:#4d6345;font-size:12px;line-height:1.8}.exercise-energy-note strong{font-weight:600}.exercise-energy-note p{margin-top:3px;font-size:11px}.exercise-energy-note:empty{display:none}
+@media(max-width:420px){.cardio-form .metric-input select{max-width:83px;font-size:10px}.food-estimator>summary{padding:13px 12px;gap:7px}.food-estimator-body{padding:0 12px 15px}.food-estimator>summary .badge{font-size:9px}.food-totals{gap:9px}}
